@@ -21,7 +21,6 @@ public:
 
     bool insert(int key, int value);
     bool remove(int key);
-    void print() const;
 };
 
 
