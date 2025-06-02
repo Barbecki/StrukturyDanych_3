@@ -66,3 +66,16 @@ void HashTableCuckoo::remove(int key) {
         return;
     }
 }
+bool HashTableCuckoo::find(int key, int& value) const {
+    std::size_t idx1 = hash1(key);
+    if (table1_[idx1].occupied && table1_[idx1].key == key) {
+        value = table1_[idx1].value;
+        return true;
+    }
+    std::size_t idx2 = hash2(key);
+    if (table2_[idx2].occupied && table2_[idx2].key == key) {
+        value = table2_[idx2].value;
+        return true;
+    }
+    return false;
+}

@@ -21,6 +21,7 @@ public:
 
     bool insert(int key, int value);
     bool remove(int key);
+    bool find(int key, int& value) const;
 };
 
 

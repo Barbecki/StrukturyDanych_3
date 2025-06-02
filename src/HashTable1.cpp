@@ -62,3 +62,17 @@ bool HashTable::remove(int key) {
 
     return false;
 }
+
+bool HashTable::find(int key, int& value) const {
+    int index = hash(key);
+    int startIndex = index;
+    do {
+        if (table[index].key == key) {
+            value = table[index].value;
+            return true;
+        }
+        if (table[index].key == -1) return false;
+        index = (index + 1) % capacity;
+    } while (index != startIndex);
+    return false;
+}

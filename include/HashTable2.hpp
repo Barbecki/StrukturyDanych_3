@@ -8,6 +8,7 @@ public:
     ~HashTableCuckoo();
     void insert(int key, int value);
     void remove(int key);
+    bool find(int key, int& value) const;
 private:
     struct Entry {
         int key, value;
