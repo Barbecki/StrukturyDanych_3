@@ -1,4 +1,4 @@
-#include "HashTable1.hpp"
+#include "../include/HashTable1.hpp"
 #include <iostream>
 
 const int EMPTY = -1;
