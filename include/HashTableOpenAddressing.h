@@ -8,6 +8,7 @@ public:
     void insert(int key, int value) override;
     void remove(int key) override;
     size_t countOccupied() const;
+    bool find(int key, int& value) const override;
     HashTableOpenAddressing(const HashTableOpenAddressing&) = delete;
     HashTableOpenAddressing& operator=(const HashTableOpenAddressing&) = delete;
     ~HashTableOpenAddressing();

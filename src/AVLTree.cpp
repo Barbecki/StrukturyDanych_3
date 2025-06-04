@@ -1,4 +1,3 @@
-
 #include "../include/AVLTree.h"
 #include <algorithm>
 
@@ -129,4 +128,19 @@ AVLTree::Node* AVLTree::remove(Node* node, int key) {
 // Usuwanie z drzewa AVL
 void AVLTree::remove(int key) {
     root = remove(root, key);
+}
+// wyszukiwanie klucza
+bool AVLTree::find(int key, int& value) const {
+    Node* current = root;
+    while (current) {
+        if (key == current->key) {
+            value = current->value;
+            return true;
+        } else if (key < current->key) {
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+    return false;
 }

@@ -1,4 +1,3 @@
-
 #include "../include/HashTableOpenAddressing.h"
 #include <stdexcept>
 #include <cmath>
@@ -125,5 +124,21 @@ size_t HashTableOpenAddressing::countOccupied() const {
         if (table[i].state == State::OCCUPIED) ++count;
     }
     return count;
+}
+// wyszukiwanie klucza
+bool HashTableOpenAddressing::find(int key, int& value) const {
+    size_t idx = hash(key);
+    size_t step = hash2(key);
+    for (size_t i = 0; i < capacity; ++i) {
+        size_t probe = (idx + i * step) % capacity;
+        if (table[probe].state == State::OCCUPIED && table[probe].key == key) {
+            value = table[probe].value;
+            return true;
+        }
+        if (table[probe].state == State::EMPTY) {
+            return false;
+        }
+    }
+    return false;
 }
 

@@ -1,4 +1,3 @@
-
 #include "../include/HashTableCuckoo.h"
 #include <stdexcept>
 
@@ -133,5 +132,20 @@ void HashTableCuckoo::rehash(bool grow) {
     table1 = new_table1;
     table2 = new_table2;
     capacity = new_capacity;
+}
+
+// Szukanie elementu w tablicy
+bool HashTableCuckoo::find(int key, int& value) const {
+    size_t idx1 = hash1(key);
+    if (table1[idx1].occupied && table1[idx1].key == key) {
+        value = table1[idx1].value;
+        return true;
+    }
+    size_t idx2 = hash2(key);
+    if (table2[idx2].occupied && table2[idx2].key == key) {
+        value = table2[idx2].value;
+        return true;
+    }
+    return false;
 }
 

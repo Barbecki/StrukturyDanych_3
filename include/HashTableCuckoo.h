@@ -8,6 +8,7 @@ public:
     ~HashTableCuckoo();
     void insert(int key, int value) override;
     void remove(int key) override;
+    bool find(int key, int& value) const override;
     HashTableCuckoo(const HashTableCuckoo&) = delete;
     HashTableCuckoo& operator=(const HashTableCuckoo&) = delete;
 private:

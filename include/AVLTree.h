@@ -6,6 +6,7 @@ public:
     ~AVLTree();
     void insert(int key, int value);
     void remove(int key);
+    bool find(int key, int& value) const;
 private:
     struct Node {
         int key, value, height;

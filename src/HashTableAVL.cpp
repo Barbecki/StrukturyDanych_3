@@ -1,4 +1,3 @@
-
 #include "../include/HashTableAVL.h"
 #include "../include/AVLTree.h"
 
@@ -32,5 +31,13 @@ size_t HashTableAVL::hash(int key) const {
     key = ((key >> 16) ^ key) * 0x45d9f3b;
     key = (key >> 16) ^ key;
     return static_cast<size_t>(key) % capacity;
+}
+// wyszukiwanie klucza
+bool HashTableAVL::find(int key, int& value) const {
+    size_t idx = hash(key);
+    if (table[idx]) {
+        return table[idx]->find(key, value);
+    }
+    return false;
 }
 
